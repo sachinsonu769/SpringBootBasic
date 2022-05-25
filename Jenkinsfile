@@ -4,7 +4,7 @@ pipeline{
 	stages{
 	    stage("Code checkout"){
 	        steps{
-	            echo 'code checkout..'
+	            git 'https://github.com/sachinsonu769/springbootbasic.git'
 	        }
 	    }
 	    stage('Build'){
