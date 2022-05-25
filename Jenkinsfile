@@ -1,15 +1,23 @@
 pipeline{
     agent any
-    
-    stages{
-        stage("Git code checkout"){
-                       steps{
-                           echo 'Sachin R'
-                       }
 
-                   }
+	stages{
+	    stage("Code checkout"){
+	        steps{
+	            echo 'code checkout..'
+	        }
+	    }
+	    stage('Build'){
+	        steps{
+	            echo 'maven build'
+	        }
+	    }
+		stage('test'){
+		    steps{
+		        echo 'test'
+		    }
+		}
 
-    }
+	}
 
-    
 }
