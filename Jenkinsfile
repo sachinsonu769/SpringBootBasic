@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage("Git code checkout"){
                        steps{
-                           echo 'Sachin'
+                           echo 'Sachin R'
                        }
 
                    }
