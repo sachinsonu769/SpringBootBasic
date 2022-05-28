@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<servers>
+
+		<server>
+			<id>nexusdeploymentrepo</id>
+			<username>admin</username>
+			<password>sachin123</password>
+			<filePermissions>664</filePermissions>
+			<directoryPermissions>775</directoryPermissions>
+			<configuration>
+				<httpConfiguration>
+					<all>
+						<connectionTimeout>120000</connectionTimeout>
+						<readTimeout>120000</readTimeout>
+					</all>
+				</httpConfiguration>
+			</configuration>
+		</server>
+
+	</servers>
+
+	<proxies>
+		<proxy>
+			<id>nexusdeploymentrepo</id>
+			<active>true</active>
+			<protocol>http</protocol>
+			<host>localhost</host>
+			<port>8081</port>
+			<username>admin</username>
+			<password>sachin123</password>
+			<nonProxyHosts>localhost</nonProxyHosts>
+		</proxy>
+	</proxies>
+
+	<mirrors>
+		<!-- reroute maven central -->
+		<mirror>
+			<id>nexusdeploymentrepo</id>
+			<url>http://localhost:8081/repository/maven-public</url>
+			<mirrorOf>central</mirrorOf>
+		</mirror>
+	</mirrors>
+
+	<profiles>
+		<profile>
+			<id>default</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<repositories>
+
+				<repository>
+					<id>nexusdeploymentrepo</id>
+					<url>
+                        http://localhost:8081/repository/maven-public/
+                    </url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+
+				<repository>
+					<id>nexusdeploymentrepo</id>
+					<name>libs-release</name>
+					<url>http://localhost:8081/artifactory/libs-release</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+
+			</repositories>
+		</profile>
+	</profiles>
+
+</settings>

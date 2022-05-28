@@ -9,7 +9,10 @@ pipeline{
 	    }
 	    stage('Build'){
 	        steps{
-	            echo 'maven build..'
+				script{
+				    mvn clean deploy
+				}
+
 	        }
 	    }
 		stage('test'){
